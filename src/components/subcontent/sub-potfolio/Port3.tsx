@@ -17,22 +17,12 @@ const main_img = ['\\src\\assets\\img\\p3\\m1.png',
     '\\src\\assets\\img\\p3\\m2.png'
 ]
 
-const images = [
-    ""
-];
 
 
-interface SelectedImageType {
-    src: string;
-    index: number; // แก้เป็น number แทน string
-}
 
 const Portfolio3: React.FC = () => {
 
     const [showButtons, setShowButtons] = useState<boolean>(false);
-
-    const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-    const [selectedImage, setSelectedImage] = useState<SelectedImageType | null>(null);
 
 
     /// Scroll Img
@@ -77,29 +67,8 @@ const Portfolio3: React.FC = () => {
         }
     };
 
-    //// Zoom Img
 
-    const openModal = (imageSrc: string, index: number) => { // เปลี่ยน index เป็น number
-        setSelectedImage({ src: imageSrc, index });
-    };
-
-    const closeModal = () => {
-        setSelectedImage(null);
-    };
-
-    const nextImage = () => {
-        if (selectedImage && selectedImage.index < images.length - 1) {
-            const nextIndex = selectedImage.index + 1;
-            setSelectedImage({ src: images[nextIndex], index: nextIndex });
-        }
-    };
-
-    const prevImage = () => {
-        if (selectedImage && selectedImage.index > 0) {
-            const prevIndex = selectedImage.index - 1;
-            setSelectedImage({ src: images[prevIndex], index: prevIndex });
-        }
-    };
+   
 
 
 
@@ -214,65 +183,7 @@ const Portfolio3: React.FC = () => {
             }
         </div>
 
-        {/* Modal */}
-        {selectedImage && (
-            <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50" onClick={closeModal}>
-                <div className="relative max-w-4xl max-h-full p-4">
-                    {/* ปุ่มปิด */}
-                    <button
-                        onClick={closeModal}
-                        className="absolute top-4 right-4 text-white hover:text-gray-300 z-10 bg-black bg-opacity-50 rounded-full p-2"
-                    >
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                    </button>
-
-                    {/* ปุ่มก่อนหน้า */}
-                    {selectedImage.index > 0 && (
-                        <button
-                            onClick={(e) => {
-                                e.stopPropagation();
-                                prevImage();
-                            }}
-                            className="absolute left-4 top-1/2 -translate-y-1/2 text-white hover:text-gray-300 bg-black bg-opacity-50 rounded-full p-3"
-                        >
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
-                        </button>
-                    )}
-
-                    {/* ปุ่มถัดไป */}
-                    {selectedImage.index < images.length - 1 && (
-                        <button
-                            onClick={(e) => {
-                                e.stopPropagation();
-                                nextImage();
-                            }}
-                            className="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:text-gray-300 bg-black bg-opacity-50 rounded-full p-3"
-                        >
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
-                        </button>
-                    )}
-
-                    {/* รูปภาพ */}
-                    <img
-                        src={selectedImage.src}
-                        alt={`Image ${selectedImage.index + 1}`}
-                        className="max-w-full max-h-full object-contain rounded-lg"
-                        onClick={(e) => e.stopPropagation()}
-                    />
-
-                    {/* ตัวนับรูป */}
-                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white bg-black bg-opacity-50 px-3 py-1 rounded-full text-sm">
-                        {selectedImage.index + 1} / {images.length}
-                    </div>
-                </div>
-            </div>
-        )}
+        
     </>);
 }
 
