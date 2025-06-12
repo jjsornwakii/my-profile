@@ -3,6 +3,7 @@ import Home from "./subcontent/Home";
 import About from "./subcontent/About";
 import Skill from "./subcontent/Skill";
 import Portfolio from "./subcontent/Portfolio";
+import Contact from "./subcontent/Cotact";
 
 
 const Content: React.FC = () => {
@@ -19,6 +20,9 @@ const Content: React.FC = () => {
 
       const [isSection4Visible, setIsSection4Visible] = useState(false);
   const section4Ref = useRef<HTMLDivElement>(null);
+
+        const [isSection5Visible, setIsSection5Visible] = useState(false);
+  const section5Ref = useRef<HTMLDivElement>(null);
 
   // useEffect for the first section
   useEffect(() => {
@@ -83,7 +87,7 @@ const Content: React.FC = () => {
           observer3.unobserve(entry.target);
         }
       },
-      { threshold: 0.6 }
+      { threshold: 0.2 }
     );
 
     // เช็คว่ามี Div จริงๆ
@@ -111,7 +115,7 @@ const Content: React.FC = () => {
           observer4.unobserve(entry.target);
         }
       },
-      { threshold: 0.6 }
+      { threshold: 0.1 }
     );
 
     // เช็คว่ามี Div จริงๆ
@@ -124,6 +128,36 @@ const Content: React.FC = () => {
       if (section4Ref.current) {
         // สั่งให้ observer หยุดทำ
         observer4.unobserve(section4Ref.current);
+      }
+    };
+  }, []);
+
+
+
+      // useEffect for the five section
+  useEffect(() => {
+
+    // เตรียม observer
+    const observer5 = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsSection5Visible(true);
+          observer5.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.0 }
+    );
+
+    // เช็คว่ามี Div จริงๆ
+    if (section5Ref.current) {
+      // สั่งให้ observer ทำงาน
+      observer5.observe(section5Ref.current);
+    }
+
+    return () => {
+      if (section5Ref.current) {
+        // สั่งให้ observer หยุดทำ
+        observer5.unobserve(section5Ref.current);
       }
     };
   }, []);
@@ -169,6 +203,17 @@ const Content: React.FC = () => {
         }`}
       >
       <Portfolio/>
+      </div>
+
+
+
+      <div
+         ref={section5Ref}
+        className={`container mx-auto p-8 transition-opacity duration-1000 ease-in ${
+          isSection5Visible ? "opacity-100" : "opacity-0"
+        }`}
+      >
+        <Contact/>
       </div>
 
 
