@@ -5,7 +5,7 @@ import Content from '../components/Content';
 
 const Home: React.FC = () => {
   return (
-    <Layout> {/* ใช้ Layout ครอบเนื้อหาของหน้า Home */}
+    <Layout> 
       <Content/>
     </Layout>
   );
