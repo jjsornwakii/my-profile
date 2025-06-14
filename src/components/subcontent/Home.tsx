@@ -2,7 +2,7 @@ import React from "react";
 
 const Home: React.FC = () => {
   return (
-    <div className="container mx-auto p-8 flex justify-center" >
+    <div className="container mx-auto p-8 flex justify-center mt-28" >
       <div className="flex flex-col justify-start gap-5  md:flex-row md:items-end md:gap-10 text-white">
         <div>
           <img src="https://e3.365dm.com/25/01/1600x900/skynews-taylor-swift-eras-tour_6801775.jpg?20250116225711"
