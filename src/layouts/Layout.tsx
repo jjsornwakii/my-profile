@@ -1,16 +1,19 @@
 // src/layouts/Layout.tsx
-import React from 'react';
+import React, { type ReactNode } from 'react';
 import Navbar from '../components/Navbar'; // Import Navbar
 import Footer from '../components/Footer';
-import Content from '../components/Content';
 
+interface LayoutProps {
+  children: ReactNode;
+}
 
-
-const Layout: React.FC = () => {
+const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar /> {/* วาง Navbar ที่นี่ */}
-      <Content/>
+      <main className="flex-grow">
+        {children} {/* ส่วนนี้คือเนื้อหาหลักของหน้า */}
+      </main>
       <Footer />
 
     </div>
