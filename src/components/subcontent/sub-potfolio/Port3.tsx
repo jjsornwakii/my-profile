@@ -13,8 +13,8 @@ const TagBox = ({ cat }: TagBoxProps) => {
     );
 }
 
-const main_img = ['\\src\\assets\\img\\p3\\m1.png',
-    '\\src\\assets\\img\\p3\\m2.png'
+const main_img = ['assets\\img\\p3\\m1.png',
+    'assets\\img\\p3\\m2.png'
 ]
 
 

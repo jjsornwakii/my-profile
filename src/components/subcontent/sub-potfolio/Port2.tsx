@@ -13,11 +13,11 @@ const TagBox = ({ cat }: TagBoxProps) => {
     );
 }
 
-const main_img = '\\src\\assets\\img\\p2\\m1.png'
+const main_img = 'assets\\img\\p2\\m1.png'
 
 const images = [
-    "\\src\\assets\\img\\p2\\e2-1.png",
-    "\\src\\assets\\img\\p2\\e2-2.png"
+    "assets\\img\\p2\\e2-1.png",
+    "assets\\img\\p2\\e2-2.png"
 ];
 
 
