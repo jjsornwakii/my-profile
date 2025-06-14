@@ -23,20 +23,23 @@ const Home: React.FC = () => {
           <div className="mt-4 text-xs">
             I'm an experienced web developer, creating and developing digital platforms while collaborating with both leading companies and ambitious startups!
           </div>
-          <div className="mt-7 flex flex-row gap-8">
-            <div>
+          <div className="mt-7 flex flex-wrap gap-8">
+            <div className=" text-center">
 
               <a href="" className="
+                        
                         px-3
                         py-2
                         border-2
                         border-[#F2C942]
                         rounded-3xl
-                        text-xl
-                        md:text-sm
-                        
+                      
+
+                        text-[10px]
+                        md:text-[16px]
                         hover:bg-[#F2C942]
                         hover:text-black
+                        transition-all
                         ">• Download CV</a>
             </div>
             <div className="flex flex-row gap-3 justify-items-center">
