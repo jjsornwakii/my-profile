@@ -1,3 +1,4 @@
+// src/components/Content.tsx
 import React, { useRef, useState, useEffect } from "react";
 import Home from "./subcontent/Home";
 import About from "./subcontent/About";
@@ -15,13 +16,13 @@ const Content: React.FC = () => {
   const [isSection2Visible, setIsSection2Visible] = useState(false);
   const section2Ref = useRef<HTMLDivElement>(null);
 
-    const [isSection3Visible, setIsSection3Visible] = useState(false);
+  const [isSection3Visible, setIsSection3Visible] = useState(false);
   const section3Ref = useRef<HTMLDivElement>(null);
 
-      const [isSection4Visible, setIsSection4Visible] = useState(false);
+  const [isSection4Visible, setIsSection4Visible] = useState(false);
   const section4Ref = useRef<HTMLDivElement>(null);
 
-        const [isSection5Visible, setIsSection5Visible] = useState(false);
+  const [isSection5Visible, setIsSection5Visible] = useState(false);
   const section5Ref = useRef<HTMLDivElement>(null);
 
   // useEffect for the first section
@@ -104,7 +105,7 @@ const Content: React.FC = () => {
     };
   }, []);
 
-    // useEffect for the forth section
+  // useEffect for the forth section
   useEffect(() => {
 
     // เตรียม observer
@@ -134,7 +135,7 @@ const Content: React.FC = () => {
 
 
 
-      // useEffect for the five section
+  // useEffect for the five section
   useEffect(() => {
 
     // เตรียม observer
@@ -166,6 +167,7 @@ const Content: React.FC = () => {
     <div className="bg-[#2E2A2A]">
       {/* First Section: Welcome to My Profile! */}
       <div
+        id="home" 
         ref={section1Ref}
         className={`container mx-auto p-8 transition-opacity duration-1000 ease-in ${
           isSection1Visible ? "opacity-100" : "opacity-0"
@@ -176,6 +178,7 @@ const Content: React.FC = () => {
 
       {/* Second Section: More Content Below! */}
       <div
+        id="about" 
         ref={section2Ref}
         className={`container mx-auto p-8 transition-opacity duration-1000 ease-in ${
           isSection2Visible ? "opacity-100" : "opacity-0"
@@ -187,28 +190,31 @@ const Content: React.FC = () => {
 
       {/* Third Section:! */}
       <div
+        id="skills" 
         ref={section3Ref}
         className={`container mx-auto p-8 transition-opacity duration-1000 ease-in ${
           isSection3Visible ? "opacity-100" : "opacity-0"
         }`}
       >
-      <Skill/>
+        <Skill/>
       </div>
-      
+
       {/* Forrth Section:! */}
       <div
+        id="portfolio" 
         ref={section4Ref}
         className={`container mx-auto p-8 transition-opacity duration-1000 ease-in ${
           isSection4Visible ? "opacity-100" : "opacity-0"
         }`}
       >
-      <Portfolio/>
+        <Portfolio/>
       </div>
 
 
 
       <div
-         ref={section5Ref}
+        id="contact" 
+        ref={section5Ref}
         className={`container mx-auto p-8 transition-opacity duration-1000 ease-in ${
           isSection5Visible ? "opacity-100" : "opacity-0"
         }`}

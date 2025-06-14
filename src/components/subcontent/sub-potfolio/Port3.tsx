@@ -76,12 +76,12 @@ const Portfolio3: React.FC = () => {
 
 
         <div className="container pt-16">
-            <div className="flex flex-col px-16 md:px-28">
+            <div className="flex flex-col  md:px-28">
                 <div className="flex  flex-col md:flex-row  gap-14  ">
-                    <div className="flex  gap-6">
+                    <div className="flex gap-4 justify-center">
                     {
                         main_img.map((_src, index) => (
-                            <img src={_src} alt={`Image ${index + 1}`} className="min-h-[10px] max-h-[320px] w-auto object-contain" ></img>
+                            <img src={_src} alt={`Image ${index + 1}`} className="max-w-[120px] min-w-[100px] md:min-h-[10px] md:max-h-[320px] w-auto object-contain" ></img>
                         )
                         )
                     }

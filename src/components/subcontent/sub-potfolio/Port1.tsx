@@ -112,7 +112,7 @@ const Portfolio1 : React.FC = () =>
         <div className="container pt-16">
                 <div className="flex px-0 md:px-28 flex-col ">
                     <div className="flex  flex-col md:flex-row  gap-14  ">
-                        <img src={main_img} className="min-h-[10px] max-h-[320px] w-auto object-contain" alt="img1" ></img>
+                        <img src={main_img} className=" min-h-[10px] max-h-[320px] min-w-[200px] object-contain" alt="img1" ></img>
     
                         <div className="flex flex-col text-left">
                             <div className="font-bold text-3xl">

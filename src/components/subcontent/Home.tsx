@@ -77,7 +77,7 @@ const Home: React.FC = () => {
                   </defs>
                 </svg>
               </a>
-              <a>
+              <a href="https://line.me/R/ti/p/~jjheartrocker" target="_blank">
                 <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" xlinkHref="http://www.w3.org/1999/xlink">
                   <rect width="40" height="40" fill="url(#pattern0_3_49)" />
                   <defs>
