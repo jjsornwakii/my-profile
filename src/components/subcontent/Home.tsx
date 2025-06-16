@@ -5,8 +5,6 @@ const Home: React.FC = () => {
   const { t } = useTranslation();
 
   return (
-
-
     <div className="container mx-auto p-8 flex  mt-28 " >
       <div className="flex flex-col justify-center gap-5  md:flex-row md:items-center md:gap-10 text-white ">
         <div>
