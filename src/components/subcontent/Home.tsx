@@ -1,46 +1,36 @@
 import React from "react";
+import { useTranslation } from 'react-i18next';
 
 const Home: React.FC = () => {
+  const { t } = useTranslation();
+
   return (
-    <div className="container mx-auto p-8 flex justify-center mt-28" >
-      <div className="flex flex-col justify-start gap-5  md:flex-row md:items-end md:gap-10 text-white">
+
+
+    <div className="container mx-auto p-8 flex  mt-28 " >
+      <div className="flex flex-col justify-center gap-5  md:flex-row md:items-center md:gap-10 text-white ">
         <div>
-          <img src="https://e3.365dm.com/25/01/1600x900/skynews-taylor-swift-eras-tour_6801775.jpg?20250116225711"
-            alt="profile_pic"
-            className="
-                    border-2
-                    rounded-lg
-                    w-full 
-                    max-w-xs
-                    md:max-w-[40vw]
-                    " />
+          <img src="https://e3.365dm.com/25/01/1600x900/skynews-taylor-swift-eras-tour_6801775.jpg?20250116225711" alt="profile_pic"
+            className="border-2 rounded-lg w-full max-w-sm md:max-w-md lg:w-[90vw]  shadow-lg" />
         </div>
         <div className="flex flex-col justify-end ">
-          <div className="text-sm sm:text-base md:text-lg lg:text-xl">Hi I'm</div>
-          <div className="text-3xl  md:text-4xl lg:text-5xl font-bold">Siwakorn Suriya</div>
+          <div className="text-sm sm:text-base md:text-lg lg:text-xl">{t(`hi`)}</div>
+          <div className="text-3xl  md:text-4xl lg:text-5xl font-bold">{t('name')}</div>
 
-          <div className="mt-7 text-sm sm:text-base md:text-lg lg:text-lg">Mobile Developer | Full stack Developer</div>
-          <div className="mt-4 text-xs">
-            I'm an experienced web developer, creating and developing digital platforms while collaborating with both leading companies and ambitious startups!
+          <div className="mt-7 text-sm sm:text-base md:text-lg lg:text-lg">{t('roles')}</div>
+          <div className="mt-4 text-xs  ">
+            {t('personal data')}
           </div>
           <div className="mt-7 flex flex-wrap gap-8">
             <div className=" text-center">
 
-              <a href="" className="
-                        
-                        px-3
-                        py-2
-                        border-2
-                        border-[#F2C942]
-                        rounded-3xl
-                      
-
-                        text-[10px]
+              <a href="/pdf/Resume.pdf" download="Siwakorn-Mobile-Dev.pdf" className="px-3 py-2 border-2 border-[#F2C942] rounded-3xl text-[10px]
                         md:text-[16px]
                         hover:bg-[#F2C942]
                         hover:text-black
                         transition-all
-                        ">• Download CV</a>
+                        ">{t('loadcv')}
+              </a>
             </div>
             <div className="flex flex-row gap-3 justify-items-center">
 
@@ -88,46 +78,22 @@ const Home: React.FC = () => {
                   </defs>
                 </svg>
               </a>
+              <a href="https://github.com/jjsornwakii" target="_blank">
+                <svg width="35" height="40" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g clip-path="url(#clip0_62_2)">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16 32C24.84 32 32 24.84 32 16C32 7.16 24.84 0 16 0C7.16 0 0 7.16 0 16C0 24.84 7.16 32 16 32ZM1.33333 16C1.33333 7.89333 7.89333 1.33333 16 1.33333C24.0933 1.33333 30.6667 7.89333 30.6667 16C30.6667 22.48 26.4667 27.9733 20.6267 29.8667C19.8973 30.012 19.6307 29.5507 19.6307 29.1627L19.6373 28.344C19.644 27.5867 19.6547 26.4507 19.6547 25.1307C19.6547 23.744 19.1933 22.8773 18.6587 22.4107C21.9387 22.0467 25.3653 20.8107 25.3653 15.1707C25.3653 13.5707 24.8067 12.2507 23.8587 11.2373C24.004 10.8733 24.5147 9.37067 23.7133 7.35733C23.7133 7.35733 22.4733 6.96933 19.6733 8.864C18.4776 8.5423 17.2449 8.37913 16.0067 8.37867C14.7667 8.38 13.5267 8.544 12.34 8.864C9.54 6.97067 8.3 7.35733 8.3 7.35733C7.49733 9.37067 8.008 10.8773 8.15333 11.2373C7.17025 12.3098 6.63165 13.7159 6.64667 15.1707C6.64667 20.8107 10.0733 22.064 13.3267 22.4107C12.9133 22.7747 12.524 23.4307 12.4027 24.384C11.552 24.7733 9.44267 25.404 8.12267 23.1693C8.12267 23.1693 7.34533 21.756 5.856 21.6627C5.856 21.6627 4.416 21.6627 5.75867 22.5613C5.75867 22.5613 6.73067 22.9987 7.38533 24.6947C7.38533 24.6947 8.236 27.3213 12.3187 26.4413C12.3187 27.236 12.3293 28.0147 12.336 28.548L12.3427 29.1653C12.3427 29.5533 12.076 30.016 11.3467 29.8693C5.52 27.9227 1.30667 22.4427 1.30667 16.0027L1.33333 16Z" fill="white" />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_62_2">
+                      <rect width="32" height="32" fill="white" />
+                    </clipPath>
+                  </defs>
+                </svg>
 
-
+              </a>
             </div>
           </div>
         </div>
-
-        {/* <h1 className="text-4xl font-bold text-center mb-6 text-gray-800">
-            Welcome to My Profile!
-          </h1>
-          <p className="text-lg text-center text-gray-600">
-            This is the main content of the Home page, elegantly wrapped by the
-            Layout component, ensuring a consistent header and structure across
-            your application.
-          </p>
-          <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-              <h2 className="text-2xl font-semibold mb-2 text-blue-700">
-                About Me
-              </h2>
-              <p className="">
-                Learn more about my background, skills, and aspirations.
-              </p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-              <h2 className="text-2xl font-semibold mb-2 text-green-700">
-                My Portfolio
-              </h2>
-              <p className="text-gray-700">
-                Explore a collection of my recent projects and works.
-              </p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-              <h2 className="text-2xl font-semibold mb-2 text-purple-700">
-                Contact
-              </h2>
-              <p className="text-gray-700">
-                Get in touch with me for collaborations or inquiries.
-              </p>
-            </div>
-          </div> */}
       </div>
     </div>
   );

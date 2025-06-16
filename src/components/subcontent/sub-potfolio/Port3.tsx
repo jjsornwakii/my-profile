@@ -1,5 +1,6 @@
 import type React from "react";
 import { useState, useRef, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 type TagBoxProps = {
     cat: string;
@@ -21,6 +22,8 @@ const main_img = ['assets\\img\\p3\\m1.png',
 
 
 const Portfolio3: React.FC = () => {
+
+    const { t } = useTranslation();
 
     const [showButtons, setShowButtons] = useState<boolean>(false);
 
@@ -68,7 +71,7 @@ const Portfolio3: React.FC = () => {
     };
 
 
-   
+
 
 
 
@@ -79,12 +82,12 @@ const Portfolio3: React.FC = () => {
             <div className="flex flex-col  md:px-28">
                 <div className="flex  flex-col md:flex-row  gap-14  ">
                     <div className="flex gap-4 justify-center">
-                    {
-                        main_img.map((_src, index) => (
-                            <img src={_src} alt={`Image ${index + 1}`} className="max-w-[120px] min-w-[100px] md:min-h-[10px] md:max-h-[320px] w-auto object-contain" ></img>
-                        )
-                        )
-                    }
+                        {
+                            main_img.map((_src, index) => (
+                                <img src={_src} alt={`Image ${index + 1}`} className="max-w-[120px] min-w-[100px] md:min-h-[10px] md:max-h-[320px] w-auto object-contain" ></img>
+                            )
+                            )
+                        }
                     </div>
                     <div className="flex flex-col text-left">
                         <div className="font-bold text-3xl">
@@ -93,7 +96,11 @@ const Portfolio3: React.FC = () => {
                         <div className="font-sans text-[24px]">
                             Health Record & Diabetes Risk Analysis Application                        </div>
                         <div className="pt-9 ">
-                            ระบบแสดงผลการวัดชีพจร นับก้าวเดิน
+                            {t('port3-1')}<br />
+                            {t('port3-2')}<br />
+                            {t('port3-3')}<br />
+                            {t('port3-4')}<br />
+                            {t('port3-5')}
 
                         </div>
                         <div className="flex flex-wrap gap-2 text-black mt-5">
@@ -183,7 +190,7 @@ const Portfolio3: React.FC = () => {
             }
         </div>
 
-        
+
     </>);
 }
 

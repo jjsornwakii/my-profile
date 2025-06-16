@@ -1,5 +1,6 @@
 import type React from "react";
 import { useState, useRef, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 type TagBoxProps = {
     cat: string;
@@ -27,6 +28,7 @@ interface SelectedImageType {
 }
 
 const Portfolio2: React.FC = () => {
+    const { t } = useTranslation();
 
     const [showButtons, setShowButtons] = useState<boolean>(false);
 
@@ -118,11 +120,11 @@ const Portfolio2: React.FC = () => {
                         <div className="font-sans text-[24px]">
                             Health Detection Smart Watch &  Monitoring Website                        </div>
                         <div className="pt-9 ">
-                            ระบบแสดงผลการวัดชีพจร นับก้าวเดิน<br/>
-                            ระบบแจ้งเตือนการล้ม<br/>
-                            ระบบแจ้งเตือนผ่านทาง Line<br/>
-                            ระบบขอความช่วยเหลือผ่านแอป (นาฬิกา)<br/>
-                            เว็บไซต์สำหรับจัดการผู้สวมใส่นาฬิกา และตั้งค่า Line Notify Token
+                            {t("port2-1")}<br />
+                            {t("port2-2")}<br />
+                            {t("port2-3")}<br />
+                            {t("port2-4")}<br />
+                            {t("port2-5")}
                         </div>
                         <div className="flex flex-wrap gap-2 text-black mt-5">
                             <TagBox cat={"Flutter"}></TagBox>
@@ -157,7 +159,7 @@ const Portfolio2: React.FC = () => {
                 </div>
             )}
 
-                <div className="flex flex-row px-0 md:px-28 overflow-x-auto pt-7 gap-3 scrollbar-hide scroll-smooth"
+            <div className="flex flex-row px-0 md:px-28 overflow-x-auto pt-7 gap-3 scrollbar-hide scroll-smooth"
                 ref={scrollContainerRef}>
                 {images.map((_src, index) => (
                     <div

@@ -1,5 +1,7 @@
 // src/components/Navbar.tsx
 import React, { useState, type ReactNode } from 'react';
+import { useTranslation } from 'react-i18next';
+
 
 type NavLinkProps = {
   href: string;
@@ -7,7 +9,7 @@ type NavLinkProps = {
   onClick?: () => void; // Added optional onClick prop
 };
 
-const NavLink = ({ href, children, onClick } : NavLinkProps ) => {
+const NavLink = ({ href, children, onClick }: NavLinkProps) => {
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault(); // Prevent default anchor behavior
     const targetId = href.startsWith('/') ? href.substring(1) : href; // Handle both /home and #home if needed
@@ -25,14 +27,13 @@ const NavLink = ({ href, children, onClick } : NavLinkProps ) => {
       href={href}
       onClick={handleClick} // Use the new handleClick
       className="
-      ml-10
       transition
       duration-100
       px-3 py-2
       border-2
       border-[#2E2A2A]
       rounded-2xl
-
+      
 
       hover:text-white
       hover:border-2
@@ -42,6 +43,9 @@ const NavLink = ({ href, children, onClick } : NavLinkProps ) => {
       hover:rounded-2xl
 
       hover:bg-[#2E2A2A]
+      inline-block
+      text-center
+      w-[120px]
       "
     >
       {children}
@@ -49,7 +53,7 @@ const NavLink = ({ href, children, onClick } : NavLinkProps ) => {
   );
 };
 
-const NavLinkList = ({ href, children, onClick } : NavLinkProps ) => {
+const NavLinkList = ({ href, children, onClick }: NavLinkProps) => {
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault(); // Prevent default anchor behavior
     const targetId = href.startsWith('/') ? href.substring(1) : href; // Handle both /home and #home if needed
@@ -94,6 +98,12 @@ const NavLinkList = ({ href, children, onClick } : NavLinkProps ) => {
 
 const Navbar: React.FC = () => {
 
+  const { i18n } = useTranslation();
+
+  const changeLang = (lang: string) => {
+    i18n.changeLanguage(lang);
+  };
+
   const [isOpen, setIsOpen] = useState(false);
 
   // Function to close the sidebar after a click
@@ -103,21 +113,51 @@ const Navbar: React.FC = () => {
 
 
   return (
-    <nav className="bg-[#F2C942] p-4 text-black shadow-md fixed top-0 w-full z-50">
+    <nav className="bg-[#F2C942] p-4 text-black flex justify-between  shadow-md fixed top-0 w-full z-50">
 
-      <div className="container mx-auto  flex justify-between items-center text-black">
 
-        <a href="/" className="text-2xl font-bold px-4">Siwakorn</a>
+      <a href="home" className="text-2xl font-bold max-w-px-4 ">Siwakorn</a>
 
-        {/* Desktop Nav */}
-        <ul className="hidden md:flex  ">
-          <li><NavLink href="home" >HOME</NavLink></li> {/* Changed to "home" (ID without #) */}
-          <li><NavLink href="about" >ABOUT</NavLink></li>
-          <li><NavLink href="skills">SKILLS</NavLink></li>
-          <li><NavLink href="portfolio" >PORTFOLIO</NavLink></li>
-          <li><NavLink href="contact">CONTACT</NavLink></li>
-        </ul>
+      {/* Desktop Nav */}
+      <ul className="w-[50%] hidden lg:flex lg:justify-around  ">
+        <li><NavLink href="home" >HOME</NavLink></li> {/* Changed to "home" (ID without #) */}
+        <li><NavLink href="about" >ABOUT</NavLink></li>
+        <li><NavLink href="skills">SKILLS</NavLink></li>
+        <li><NavLink href="portfolio" >PORTFOLIO</NavLink></li>
+        <li><NavLink href="contact">CONTACT</NavLink></li>
+      </ul>
 
+      <div className='flex flex-row space-x-2'>
+        <div className="space-x-2 ">
+          <button onClick={() => changeLang('th')}>
+            <svg width="45" height="45" viewBox="0 0 62 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M57.6943 47.3611H4.30545V14.6389H57.6943V47.3611Z" fill="white" />
+              <path d="M57.6943 36.1667H4.30545V25.8333H57.6943V36.1667Z" fill="#1E50A0" />
+              <path d="M57.6943 18.9444H4.30545V14.6389H57.6943V18.9444ZM57.6943 47.3611H4.30545V43.0556H57.6943V47.3611Z" fill="#D22F27" />
+              <path d="M57.6943 47.3611H4.30545V14.6389H57.6943V47.3611Z" stroke="black" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+
+          </button>
+          <button onClick={() => changeLang('en')}>
+            <svg width="45" height="45" viewBox="0 0 62 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M57.6943 47.3611H4.30545V14.6389H57.6943V47.3611Z" fill="#1E50A0" />
+              <path d="M27.5557 37.1518V34.4444H18.7887L4.30566 43.3216V47.3611H10.8966L27.5557 37.1518Z" fill="white" />
+              <path d="M4.30566 47.3611H7.60114L27.5557 35.1308V34.4444H24.5573L4.30566 46.8565V47.3611Z" fill="#D22F27" />
+              <path d="M10.8957 14.6389H4.30566V18.6792L18.7878 27.5555H27.5557V24.8491L10.8957 14.6389Z" fill="white" />
+              <path d="M4.30555 14.6389V16.6599L22.0832 27.5555H26.2053L5.13049 14.6389H4.30555Z" fill="#D22F27" />
+              <path d="M34.4443 24.8482V27.5555H43.2113L57.6943 18.6783V14.6389H51.1034L34.4443 24.8482Z" fill="white" />
+              <path d="M57.6943 14.6389H54.3989L34.4443 26.8692V27.5555H37.4427L57.6943 15.1435V14.6389Z" fill="#D22F27" />
+              <path d="M51.1043 47.3611H57.6943V43.3208L43.2122 34.4444H34.4443V37.1509L51.1043 47.3611Z" fill="white" />
+              <path d="M57.6943 47.3611V45.3401L39.9158 34.4444H35.7946L56.8694 47.3611H57.6943Z" fill="#D22F27" />
+              <path d="M57.6943 35.3055H4.30545V26.6944H57.6943V35.3055Z" fill="white" />
+              <path d="M35.3057 47.3611H26.6946V14.6389H35.3057V47.3611Z" fill="white" />
+              <path d="M57.6943 33.5833H4.30545V28.4167H57.6943V33.5833Z" fill="#D22F27" />
+              <path d="M33.5833 47.3611H28.4166V14.6389H33.5833V47.3611Z" fill="#D22F27" />
+              <path d="M57.6943 47.3611H4.30545V14.6389H57.6943V47.3611Z" stroke="black" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+
+          </button>
+        </div>
         {/* Hamburger */}
         <div className=" flex  space-x-2 right-0"> {/* Added md:hidden to hide on desktop */}
           <button onClick={() => setIsOpen(!isOpen)}>
@@ -127,7 +167,6 @@ const Navbar: React.FC = () => {
           </button>
         </div>
       </div>
-
       {/* Side Navbar (overlay) */}
       {isOpen && (
         <div className="fixed inset-0 z-40 bg-white bg-opacity-50 " onClick={() => setIsOpen(false)}>
