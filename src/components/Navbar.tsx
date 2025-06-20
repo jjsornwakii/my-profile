@@ -116,7 +116,7 @@ const Navbar: React.FC = () => {
     <nav className="bg-[#F2C942] p-4 text-black flex justify-between  shadow-md fixed top-0 w-full z-50">
 
 
-      <a href="home" className="text-2xl font-bold max-w-px-4 pt-2">SIWAKORN</a>
+      <a href="/" className="text-2xl font-bold max-w-px-4 pt-2">SIWAKORN</a>
 
       {/* Desktop Nav */}
       <ul className="w-[50%] hidden lg:flex lg:justify-around  ">
