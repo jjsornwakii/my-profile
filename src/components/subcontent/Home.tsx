@@ -4,14 +4,16 @@ import { useTranslation } from 'react-i18next';
 const Home: React.FC = () => {
   const { t } = useTranslation();
 
+  const mypic = "assets\\img\\profile\\b77b2ced-af0e-4101-9248-1eba75670895.jpg"
+
   return (
-    <div className="container mx-auto p-8 flex  mt-28 " >
+    <div className="container mx-auto p-8 flex justify-center items-center mt-28 " >
       <div className="flex flex-col justify-center gap-5  md:flex-row md:items-center md:gap-10 text-white ">
         <div>
-          <img src="https://e3.365dm.com/25/01/1600x900/skynews-taylor-swift-eras-tour_6801775.jpg?20250116225711" alt="profile_pic"
+          <img src={mypic} alt="profile_pic"
             className="border-2 rounded-lg w-full max-w-sm md:max-w-md lg:w-[90vw]  shadow-lg" />
         </div>
-        <div className="flex flex-col justify-end ">
+        <div className="flex flex-col justify-end max-w-[750px] ">
           <div className="text-sm sm:text-base md:text-lg lg:text-xl">{t(`hi`)}</div>
           <div className="text-3xl  md:text-4xl lg:text-5xl font-bold">{t('name')}</div>
 
@@ -22,7 +24,8 @@ const Home: React.FC = () => {
           <div className="mt-7 flex flex-wrap gap-8">
             <div className=" text-center">
 
-              <a href="/pdf/Resume.pdf" download="Siwakorn-Mobile-Dev.pdf" className="px-3 py-2 border-2 border-[#F2C942] rounded-3xl text-[10px]
+              <a href="/pdf/Resume.pdf" download="Siwakorn-Mobile-Dev.pdf"
+                className="px-3 py-2 border-2 border-[#F2C942] rounded-3xl text-[10px]
                         md:text-[16px]
                         hover:bg-[#F2C942]
                         hover:text-black
