@@ -9,13 +9,13 @@ i18n
     .use(initReactI18next)
     .init({
         supportedLngs: ['en', 'th'],
-        fallbackLng: 'en',
+        fallbackLng: 'th',
         debug: true,
         backend: {
             loadPath: '/locales/{{lng}}/translation.json',
         },
         detection: {
-            order: ['localStorage', 'navigator', 'htmlTag'],
+            order: ['localStorage', 'htmlTag', 'navigator'],
             caches: ['localStorage'],
         },
         interpolation: {
