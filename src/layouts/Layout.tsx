@@ -10,9 +10,9 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <div className="flex flex-col min-h-screen">
-      <Navbar /> {/* วาง Navbar ที่นี่ */}
+      <Navbar /> 
       <main className="flex-grow">
-        {children} {/* ส่วนนี้คือเนื้อหาหลักของหน้า */}
+        {children} 
       </main>
       <Footer />
 
