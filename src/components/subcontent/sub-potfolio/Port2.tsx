@@ -8,11 +8,11 @@ type TagBoxProps = {
 
 const TagBox = ({ cat }: TagBoxProps) => {
     return (
-        <div className="flex rounded-sm bg-[#F2C942] p-1 hover:text-red-600">
+        <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-[#F2C942]/10 border border-[#F2C942]/30 text-[#F2C942] hover:bg-[#F2C942] hover:text-black transition-all duration-200 cursor-default">
             {cat}
-        </div>
+        </span>
     );
-}
+};
 
 const main_img = 'assets\\img\\p2\\m1.png'
 
@@ -107,38 +107,65 @@ const Portfolio2: React.FC = () => {
     return (<>
 
 
-        <div className="container pt-16">
-            <div className="flex flex-col px-0 md:px-28">
-                <div className="flex  flex-col  md:flex-row  gap-14  ">
-                    <img src={main_img} className="min-h-[10px] max-h-[320px] w-auto min-w-[200px] object-contain" alt="img1" ></img>
-
-                    <div className="flex flex-col text-left">
-                        <div className="font-bold text-3xl">
-                            แอปพลิเคชันตรวจจับความผิดปกติของร่างกาย <br />บน Wear OS และแจ้งเตือนผ่าน Line <br />พร้อมเว็บไซต์สำหรับผู้ดูแล
-                        </div>
-                        <hr className="my-3 border-t border-[#F2C942] border-2"></hr>
-                        <div className="font-sans text-[24px]">
-                            Health Detection Smart Watch &  Monitoring Website                        </div>
-                        <div className="pt-9 ">
-                            {t("port2-1")}<br />
-                            {t("port2-2")}<br />
-                            {t("port2-3")}<br />
-                            {t("port2-4")}<br />
-                            {t("port2-5")}
-                        </div>
-                        <div className="flex flex-wrap gap-2 text-black mt-5">
-                            <TagBox cat={"Flutter"}></TagBox>
-                            <TagBox cat={"PHP"}></TagBox>
-                            <TagBox cat={"Bootstrap"}></TagBox>
-                            <TagBox cat={"MySQL"}></TagBox>
-                        </div>
+        <div className="w-full glass-panel p-6 sm:p-8 rounded-2xl border border-white/10 hover:border-[#F2C942]/40 transition-all duration-300 shadow-xl">
+            <div className="flex flex-col lg:flex-row items-center gap-8">
+                {/* Main image preview */}
+                <div className="relative group overflow-hidden rounded-xl bg-black/40 border border-white/10 p-2 max-w-sm flex-shrink-0">
+                    <img 
+                        src={main_img} 
+                        className="max-h-[260px] w-full object-contain rounded-lg transition-transform duration-500 group-hover:scale-105" 
+                        alt="Wear OS Smartwatch Application" 
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-3">
+                        <span className="text-xs text-[#F2C942] font-semibold tracking-wider">Wear OS & Line Alerts</span>
                     </div>
-
                 </div>
 
-            </div>
+                <div className="flex flex-col text-left space-y-3 flex-1">
+                    <div className="inline-block self-start px-2.5 py-0.5 rounded-full bg-[#F2C942]/15 border border-[#F2C942]/30 text-[#F2C942] text-[11px] font-semibold uppercase tracking-wider">
+                        Smart Watch (Wear OS) & Health IoT
+                    </div>
 
-        </div>
+                    <h3 className="font-bold text-xl sm:text-2xl text-white">
+                        แอปพลิเคชันตรวจจับความผิดปกติของร่างกายบน Wear OS พร้อมระบบแจ้งเตือน Line
+                    </h3>
+
+                    <div className="text-sm font-light text-gray-300 tracking-wide">
+                        Health Detection Smart Watch & Monitoring Website
+                    </div>
+
+                    <ul className="text-xs sm:text-sm text-gray-300 space-y-1.5 pt-2 font-light">
+                        <li className="flex items-start gap-2">
+                            <span className="text-[#F2C942]">▹</span>
+                            <span>{t("port2-1")}</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                            <span className="text-[#F2C942]">▹</span>
+                            <span>{t("port2-2")}</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                            <span className="text-[#F2C942]">▹</span>
+                            <span>{t("port2-3")}</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                            <span className="text-[#F2C942]">▹</span>
+                            <span>{t("port2-4")}</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                            <span className="text-[#F2C942]">▹</span>
+                            <span>{t("port2-5")}</span>
+                        </li>
+                    </ul>
+
+                    <div className="flex flex-wrap gap-2 pt-3">
+                        <TagBox cat={"Wear OS"} />
+                        <TagBox cat={"Flutter"} />
+                        <TagBox cat={"Line Notify API"} />
+                        <TagBox cat={"PHP"} />
+                        <TagBox cat={"MySQL"} />
+                    </div>
+                </div>
+            </div>
         <div className="relative">
             {showButtons && (
                 <div>
@@ -208,6 +235,7 @@ const Portfolio2: React.FC = () => {
                     </div>
                 ))}
             </div>
+        </div>
         </div>
 
         {/* Modal */}

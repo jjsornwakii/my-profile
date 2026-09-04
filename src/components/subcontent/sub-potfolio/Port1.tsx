@@ -8,11 +8,11 @@ type TagBoxProps = {
 
 const TagBox = ({ cat }: TagBoxProps) => {
     return (
-        <div className="flex rounded-sm bg-[#F2C942] p-1 hover:text-red-600">
+        <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-[#F2C942]/10 border border-[#F2C942]/30 text-[#F2C942] hover:bg-[#F2C942] hover:text-black transition-all duration-200 cursor-default">
             {cat}
-        </div>
+        </span>
     );
-}
+};
 
 const main_img = 'assets\\img\\p1\\m1.png'
 
@@ -110,40 +110,65 @@ const Portfolio1: React.FC = () => {
     return (<>
 
 
-        <div className="container pt-16">
-            <div className="flex px-0 md:px-28 flex-col ">
-                <div className="flex  flex-col md:flex-row  gap-14  ">
-                    <img src={main_img} className=" min-h-[10px] max-h-[320px] min-w-[200px] object-contain" alt="img1" ></img>
-
-                    <div className="flex flex-col text-left">
-                        <div className="font-bold text-3xl">
-                            ระบบควบคุมการเข้า-ออก <br />สำหรับยานพาหนะ พร้อมระบบจัดการค่าจอดรถ
-                        </div>
-                        <hr className="my-3 border-t border-[#F2C942] border-2"></hr>
-                        <div className="font-sans text-[24px]">
-                            Automated Vehicle Access Control with Parking Fee Management
-                        </div>
-                        <div className="pt-9 ">
-                            {t('port1-1')}<br />
-                            {t('port1-2')}<br />
-                            {t('port1-3')}<br />
-                            {t('port1-4')}<br />
-                            {t('port1-5')}
-                        </div>
-                        <div className="flex flex-wrap gap-2 text-black mt-5">
-                            <TagBox cat={"Python"}></TagBox>
-                            <TagBox cat={"ReactJS"}></TagBox>
-                            <TagBox cat={"Tailwind"}></TagBox>
-                            <TagBox cat={"NestJS"}></TagBox>
-                            <TagBox cat={"PostgreSQL"}></TagBox>
-                        </div>
+        <div className="w-full glass-panel p-6 sm:p-8 rounded-2xl border border-white/10 hover:border-[#F2C942]/40 transition-all duration-300 shadow-xl">
+            <div className="flex flex-col lg:flex-row items-center gap-8">
+                {/* Main image preview */}
+                <div className="relative group overflow-hidden rounded-xl bg-black/40 border border-white/10 p-2 max-w-sm flex-shrink-0">
+                    <img 
+                        src={main_img} 
+                        className="max-h-[260px] w-full object-contain rounded-lg transition-transform duration-500 group-hover:scale-105" 
+                        alt="Parking Control System" 
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-3">
+                        <span className="text-xs text-[#F2C942] font-semibold tracking-wider">Vehicle Access Control</span>
                     </div>
-
                 </div>
 
-            </div>
+                <div className="flex flex-col text-left space-y-3 flex-1">
+                    <div className="inline-block self-start px-2.5 py-0.5 rounded-full bg-[#F2C942]/15 border border-[#F2C942]/30 text-[#F2C942] text-[11px] font-semibold uppercase tracking-wider">
+                        Automated Access & Payments
+                    </div>
 
-        </div>
+                    <h3 className="font-bold text-xl sm:text-2xl text-white">
+                        ระบบควบคุมการเข้า-ออกยานพาหนะ พร้อมระบบจัดการค่าจอดรถ
+                    </h3>
+                    
+                    <div className="text-sm font-light text-gray-300 tracking-wide">
+                        Automated Vehicle Access Control with Parking Fee Management
+                    </div>
+
+                    <ul className="text-xs sm:text-sm text-gray-300 space-y-1.5 pt-2 font-light">
+                        <li className="flex items-start gap-2">
+                            <span className="text-[#F2C942]">▹</span>
+                            <span>{t('port1-1')}</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                            <span className="text-[#F2C942]">▹</span>
+                            <span>{t('port1-2')}</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                            <span className="text-[#F2C942]">▹</span>
+                            <span>{t('port1-3')}</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                            <span className="text-[#F2C942]">▹</span>
+                            <span>{t('port1-4')}</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                            <span className="text-[#F2C942]">▹</span>
+                            <span>{t('port1-5')}</span>
+                        </li>
+                    </ul>
+
+                    <div className="flex flex-wrap gap-2 pt-3">
+                        <TagBox cat={"Python"} />
+                        <TagBox cat={"ReactJS"} />
+                        <TagBox cat={"Tailwind"} />
+                        <TagBox cat={"NestJS"} />
+                        <TagBox cat={"PostgreSQL"} />
+                    </div>
+                </div>
+            </div>
         <div className="relative">
             {showButtons && (
                 <div>
@@ -213,6 +238,7 @@ const Portfolio1: React.FC = () => {
                     </div>
                 ))}
             </div>
+        </div>
         </div>
 
         {/* Modal */}

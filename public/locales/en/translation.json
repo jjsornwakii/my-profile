@@ -1,9 +1,9 @@
 {
     "hi": "Hi I'm",
     "name": "Siwakorn Suriya",
-    "roles": "Mobile Developer | Full stack Developer",
-    "personal data": "I am a recent graduate with a strong interest in mobile application development. I specialize in the Flutter framework and have experience in developing mobile applications alongside backend API services that efficiently integrate and work with mobile platforms. I am highly motivated to learn new technologies and eager to contribute my knowledge and skills to support the organization.",
-    "aboutme": "Hello, I’m Mr. Siwakorn Suriya (Jay). I hold a Bachelor's degree in Computer Engineering from the Faculty of Engineering, King Mongkut's Institute of Technology Ladkrabang. I'm highly interested in mobile application development. I specialize in the Flutter framework and have experience in developing mobile applications alongside backend API services that efficiently integrate and work with mobile platforms. I am highly motivated to learn new technologies and eager to contribute my knowledge and skills to support the organization and to create solutions that truly meet user needs. Ultimately, my goal is to develop advanced technologies that benefit both businesses and society in the future.",
+    "roles": "Mobile Developer (Android / iOS) | Kotlin Native Specialist",
+    "personal data": "Mobile Developer with hands-on experience managing app stores (Google Play Store & Apple App Store), maintaining and updating legacy apps for modern OS versions, and engineering new business-oriented applications. Specializing primarily in Kotlin Native for Android, with foundational experience in Swift and collaborative development using Flutter.",
+    "aboutme": "Hello, I’m Siwakorn Suriya (Jay). I graduated with a Bachelor's degree in Computer Engineering from King Mongkut's Institute of Technology Ladkrabang. Currently working as a Mobile Developer with core expertise in native Android development using Kotlin. I have solid experience managing app deployments and store compliance, refactoring and upgrading legacy applications, and delivering end-to-end business solutions from ground up. I have also worked briefly with Swift on iOS and touched Flutter for cross-platform requirements. Driven by continuous learning and delivering scalable, user-centric mobile products.",
     "loadcv": "• Download Resume",
     "port1-1": "• Automatic License Plate Recognition System via Raspberry Pi 4",
     "port1-2": "• Admin Website for Parking Lot Access Control",

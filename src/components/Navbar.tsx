@@ -1,18 +1,18 @@
 // src/components/Navbar.tsx
-import React, { useState, type ReactNode } from 'react';
+import React, { useState, useEffect, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
-
 
 type NavLinkProps = {
   href: string;
   children: ReactNode;
-  onClick?: () => void; // Added optional onClick prop
+  active?: boolean;
+  onClick?: () => void;
 };
 
-const NavLink = ({ href, children, onClick }: NavLinkProps) => {
+const NavLink = ({ href, children, active, onClick }: NavLinkProps) => {
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault(); // Prevent default anchor behavior
-    const targetId = href.startsWith('/') ? href.substring(1) : href; // Handle both /home and #home if needed
+    e.preventDefault();
+    const targetId = href.startsWith('/') ? href.substring(1) : href;
     const targetElement = document.getElementById(targetId);
     if (targetElement) {
       targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -25,38 +25,24 @@ const NavLink = ({ href, children, onClick }: NavLinkProps) => {
   return (
     <a
       href={href}
-      onClick={handleClick} // Use the new handleClick
-      className="
-      transition
-      duration-100
-      px-3 py-2
-      border-2
-      border-[#2E2A2A]
-      rounded-2xl
-      
-
-      hover:text-white
-      hover:border-2
-      hover:border-white
-      hover:px-3
-      hover:py-2
-      hover:rounded-2xl
-
-      hover:bg-[#2E2A2A]
-      inline-block
-      text-center
-      w-[120px]
-      "
+      onClick={handleClick}
+      className={`
+        relative px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold tracking-wider transition-all duration-300
+        ${active 
+          ? 'bg-[#F2C942] text-black shadow-[0_0_15px_rgba(242,201,66,0.5)] scale-105' 
+          : 'text-gray-300 hover:text-white hover:bg-white/10'
+        }
+      `}
     >
       {children}
     </a>
   );
 };
 
-const NavLinkList = ({ href, children, onClick }: NavLinkProps) => {
+const NavLinkList = ({ href, children, active, onClick }: NavLinkProps) => {
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault(); // Prevent default anchor behavior
-    const targetId = href.startsWith('/') ? href.substring(1) : href; // Handle both /home and #home if needed
+    e.preventDefault();
+    const targetId = href.startsWith('/') ? href.substring(1) : href;
     const targetElement = document.getElementById(targetId);
     if (targetElement) {
       targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -69,135 +55,174 @@ const NavLinkList = ({ href, children, onClick }: NavLinkProps) => {
   return (
     <a
       href={href}
-      onClick={handleClick} // Use the new handleClick
-      className="
-      transition
-      duration-100
-      border-2
-      border-[#2E2A2A]
-      px-3
-      py-2
-
-
-      hover:text-white
-      hover:border-2
-      hover:border-white
-      hover:px-3
-      hover:py-2
-
-      hover:bg-[#F2C942]
-      "
+      onClick={handleClick}
+      className={`
+        px-4 py-3 rounded-xl text-sm font-semibold tracking-wider transition-all duration-200 flex items-center justify-between
+        ${active ? 'bg-[#F2C942] text-black font-bold' : 'text-gray-200 hover:bg-white/10 hover:text-[#F2C942]'}
+      `}
     >
-      {children}
+      <span>{children}</span>
+      <span className="text-xs opacity-50">→</span>
     </a>
   );
 };
-
-
-
 
 const Navbar: React.FC = () => {
-
   const { i18n } = useTranslation();
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
 
   const changeLang = (lang: string) => {
     i18n.changeLanguage(lang);
   };
 
-  const [isOpen, setIsOpen] = useState(false);
-
-  // Function to close the sidebar after a click
   const closeSidebar = () => {
     setIsOpen(false);
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+
+      const sections = ['home', 'about', 'skills', 'portfolio', 'contact'];
+      const scrollPosition = window.scrollY + 200;
+
+      for (const section of sections) {
+        const el = document.getElementById(section);
+        if (el) {
+          const top = el.offsetTop;
+          const height = el.offsetHeight;
+          if (scrollPosition >= top && scrollPosition < top + height) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <nav className="bg-[#F2C942] p-4 text-black flex justify-between  shadow-md fixed top-0 w-full z-50">
+    <header className="fixed top-0 left-0 right-0 z-50 flex justify-center p-3 sm:p-5 transition-all duration-300 pointer-events-none">
+      <nav className={`
+        pointer-events-auto
+        w-full max-w-6xl
+        flex items-center justify-between
+        px-5 py-3 rounded-2xl
+        transition-all duration-500
+        ${scrolled 
+          ? 'bg-[#1b1919]/80 backdrop-blur-xl border border-white/15 shadow-[0_10px_30px_rgba(0,0,0,0.5)]' 
+          : 'bg-[#2E2A2A]/60 backdrop-blur-md border border-[#F2C942]/20 shadow-lg'
+        }
+      `}>
+        {/* Brand logo */}
+        <a 
+          href="#home" 
+          className="group flex items-center gap-2 text-xl sm:text-2xl font-black tracking-wider text-white"
+        >
+          <span className="w-8 h-8 rounded-lg bg-[#F2C942] text-black flex items-center justify-center font-extrabold text-sm shadow-[0_0_10px_rgba(242,201,66,0.6)] group-hover:rotate-12 transition-transform duration-300">
+            S
+          </span>
+          <span className="bg-gradient-to-r from-white via-gray-200 to-[#F2C942] bg-clip-text text-transparent group-hover:opacity-90">
+            SIWAKORN
+          </span>
+        </a>
 
-
-      <a href="/" className="text-2xl font-bold max-w-px-4 pt-2">SIWAKORN</a>
-
-      {/* Desktop Nav */}
-      <ul className="w-[50%] hidden lg:flex lg:justify-around  ">
-        <li><NavLink href="home" >HOME</NavLink></li> {/* Changed to "home" (ID without #) */}
-        <li><NavLink href="about" >ABOUT</NavLink></li>
-        <li><NavLink href="skills">SKILLS</NavLink></li>
-        <li><NavLink href="portfolio" >PORTFOLIO</NavLink></li>
-        <li><NavLink href="contact">CONTACT</NavLink></li>
-      </ul>
-
-      <div className='flex flex-row space-x-2'>
-        <div className="space-x-2 ">
-          <button onClick={() => changeLang('th')}>
-            <svg width="45" height="45" viewBox="0 0 62 62" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M57.6943 47.3611H4.30545V14.6389H57.6943V47.3611Z" fill="white" />
-              <path d="M57.6943 36.1667H4.30545V25.8333H57.6943V36.1667Z" fill="#1E50A0" />
-              <path d="M57.6943 18.9444H4.30545V14.6389H57.6943V18.9444ZM57.6943 47.3611H4.30545V43.0556H57.6943V47.3611Z" fill="#D22F27" />
-              <path d="M57.6943 47.3611H4.30545V14.6389H57.6943V47.3611Z" stroke="black" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-
-          </button>
-          <button onClick={() => changeLang('en')}>
-            <svg width="45" height="45" viewBox="0 0 62 62" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M57.6943 47.3611H4.30545V14.6389H57.6943V47.3611Z" fill="#1E50A0" />
-              <path d="M27.5557 37.1518V34.4444H18.7887L4.30566 43.3216V47.3611H10.8966L27.5557 37.1518Z" fill="white" />
-              <path d="M4.30566 47.3611H7.60114L27.5557 35.1308V34.4444H24.5573L4.30566 46.8565V47.3611Z" fill="#D22F27" />
-              <path d="M10.8957 14.6389H4.30566V18.6792L18.7878 27.5555H27.5557V24.8491L10.8957 14.6389Z" fill="white" />
-              <path d="M4.30555 14.6389V16.6599L22.0832 27.5555H26.2053L5.13049 14.6389H4.30555Z" fill="#D22F27" />
-              <path d="M34.4443 24.8482V27.5555H43.2113L57.6943 18.6783V14.6389H51.1034L34.4443 24.8482Z" fill="white" />
-              <path d="M57.6943 14.6389H54.3989L34.4443 26.8692V27.5555H37.4427L57.6943 15.1435V14.6389Z" fill="#D22F27" />
-              <path d="M51.1043 47.3611H57.6943V43.3208L43.2122 34.4444H34.4443V37.1509L51.1043 47.3611Z" fill="white" />
-              <path d="M57.6943 47.3611V45.3401L39.9158 34.4444H35.7946L56.8694 47.3611H57.6943Z" fill="#D22F27" />
-              <path d="M57.6943 35.3055H4.30545V26.6944H57.6943V35.3055Z" fill="white" />
-              <path d="M35.3057 47.3611H26.6946V14.6389H35.3057V47.3611Z" fill="white" />
-              <path d="M57.6943 33.5833H4.30545V28.4167H57.6943V33.5833Z" fill="#D22F27" />
-              <path d="M33.5833 47.3611H28.4166V14.6389H33.5833V47.3611Z" fill="#D22F27" />
-              <path d="M57.6943 47.3611H4.30545V14.6389H57.6943V47.3611Z" stroke="black" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-
-          </button>
+        {/* Desktop Nav Pills */}
+        <div className="hidden lg:flex items-center gap-1 p-1.5 rounded-full bg-black/40 border border-white/10 shadow-inner">
+          <NavLink href="home" active={activeSection === 'home'}>HOME</NavLink>
+          <NavLink href="about" active={activeSection === 'about'}>ABOUT</NavLink>
+          <NavLink href="skills" active={activeSection === 'skills'}>SKILLS</NavLink>
+          <NavLink href="portfolio" active={activeSection === 'portfolio'}>PORTFOLIO</NavLink>
+          <NavLink href="contact" active={activeSection === 'contact'}>CONTACT</NavLink>
         </div>
-        {/* Hamburger */}
-        <div className=" flex  space-x-2 right-0"> {/* Added md:hidden to hide on desktop */}
-          <button onClick={() => setIsOpen(!isOpen)}>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
+
+        {/* Right side: Language & Hamburger */}
+        <div className="flex items-center gap-3">
+          {/* Language Switcher Capsule */}
+          <div className="flex items-center p-1 rounded-full bg-black/40 border border-white/10 text-xs font-bold shadow-inner">
+            <button
+              onClick={() => changeLang('th')}
+              className={`px-2.5 py-1 rounded-full transition-all duration-200 flex items-center gap-1.5 ${
+                i18n.language === 'th' ? 'bg-[#F2C942] text-black shadow-sm' : 'text-gray-400 hover:text-white'
+              }`}
+              title="ภาษาไทย"
+            >
+              <span>TH</span>
+            </button>
+            <button
+              onClick={() => changeLang('en')}
+              className={`px-2.5 py-1 rounded-full transition-all duration-200 flex items-center gap-1.5 ${
+                i18n.language === 'en' ? 'bg-[#F2C942] text-black shadow-sm' : 'text-gray-400 hover:text-white'
+              }`}
+              title="English"
+            >
+              <span>EN</span>
+            </button>
+          </div>
+
+          {/* Mobile Hamburger */}
+          <button 
+            onClick={() => setIsOpen(!isOpen)}
+            className="lg:hidden p-2 rounded-xl bg-black/40 border border-white/10 text-white hover:text-[#F2C942] hover:border-[#F2C942]/40 transition-colors"
+            aria-label="Toggle menu"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-6 h-6">
               <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
             </svg>
           </button>
         </div>
-      </div>
-      {/* Side Navbar (overlay) */}
+      </nav>
+
+      {/* Mobile Drawer Overlay */}
       {isOpen && (
-        <div className="fixed inset-0 z-40 bg-white bg-opacity-50 " onClick={() => setIsOpen(false)}>
+        <div 
+          className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm pointer-events-auto flex justify-end animate-fadeIn" 
+          onClick={() => setIsOpen(false)}
+        >
           <div
-            className="fixed top-0 right-0 w-64 h-full bg-[#2E2A2A] text-[#F2C942] shadow-lg z-50"
+            className="w-72 h-full bg-[#1b1919] border-l border-[#F2C942]/20 p-6 flex flex-col justify-between shadow-2xl animate-slideLeft"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex justify-between items-center p-4 border-b">
-              <span className="text-xl font-bold">Menu</span>
-              <button onClick={() => setIsOpen(false)}>
-                <svg xmlns="http://www.w3.org/2000/svg"
-                  fill="none" viewBox="0 0 24 24"
-                  strokeWidth="1.5" stroke="currentColor"
-                  className="w-6 h-6">
-                  <path strokeLinecap="round" strokeLinejoin="round"
-                    d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
+            <div>
+              <div className="flex justify-between items-center pb-5 border-b border-white/10">
+                <div className="flex items-center gap-2">
+                  <span className="w-7 h-7 rounded-lg bg-[#F2C942] text-black flex items-center justify-center font-bold text-xs">
+                    S
+                  </span>
+                  <span className="text-lg font-bold text-white tracking-wider">SIWAKORN</span>
+                </div>
+                <button 
+                  onClick={() => setIsOpen(false)}
+                  className="p-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white transition-colors"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-5 h-5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+
+              <div className="flex flex-col gap-2 mt-6">
+                <NavLinkList href="home" active={activeSection === 'home'} onClick={closeSidebar}>HOME</NavLinkList>
+                <NavLinkList href="about" active={activeSection === 'about'} onClick={closeSidebar}>ABOUT</NavLinkList>
+                <NavLinkList href="skills" active={activeSection === 'skills'} onClick={closeSidebar}>SKILLS</NavLinkList>
+                <NavLinkList href="portfolio" active={activeSection === 'portfolio'} onClick={closeSidebar}>PORTFOLIO</NavLinkList>
+                <NavLinkList href="contact" active={activeSection === 'contact'} onClick={closeSidebar}>CONTACT</NavLinkList>
+              </div>
             </div>
-            <div className="flex flex-col p-4"> {/* Added p-4 for padding */}
-              <NavLinkList href="home" onClick={closeSidebar}>HOME</NavLinkList>
-              <NavLinkList href="about" onClick={closeSidebar}>ABOUT</NavLinkList>
-              <NavLinkList href="skills" onClick={closeSidebar}>SKILLS</NavLinkList>
-              <NavLinkList href="portfolio" onClick={closeSidebar}>PORTFOLIO</NavLinkList>
-              <NavLinkList href="contact" onClick={closeSidebar}>CONTACT</NavLinkList>
+
+            <div className="pt-6 border-t border-white/10 text-center">
+              <p className="text-xs text-gray-400 font-light">
+                Mobile Developer • Kotlin Native
+              </p>
             </div>
           </div>
         </div>
       )}
-
-    </nav>
+    </header>
   );
 };
 

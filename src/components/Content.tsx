@@ -164,65 +164,68 @@ const Content: React.FC = () => {
   }, []);
 
   return (
-    <div className="bg-[#2E2A2A]">
-      {/* First Section: Welcome to My Profile! */}
+    <div className="bg-[#1b1919] min-h-screen relative overflow-hidden text-white">
+      {/* Dynamic Parallax Ambient Background Orbs */}
+      <div className="pointer-events-none fixed inset-0 overflow-hidden z-0">
+        <div className="absolute -top-40 -left-40 w-96 h-96 bg-[#F2C942]/10 rounded-full blur-3xl animate-float"></div>
+        <div className="absolute top-1/3 -right-40 w-[30rem] h-[30rem] bg-amber-600/10 rounded-full blur-3xl animate-glow"></div>
+        <div className="absolute -bottom-40 left-1/4 w-[32rem] h-[32rem] bg-[#F2C942]/5 rounded-full blur-3xl animate-float"></div>
+      </div>
+
+      {/* First Section: Home Hero */}
       <div
         id="home" 
         ref={section1Ref}
-        className={`container mx-auto p-8 transition-opacity duration-1000 ease-in ${
-          isSection1Visible ? "opacity-100" : "opacity-0"
+        className={`relative z-10 pt-20 transition-all duration-1000 ease-out ${
+          isSection1Visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
         }`}
       >
         <Home />
       </div>
 
-      {/* Second Section: More Content Below! */}
+      {/* Second Section: About */}
       <div
         id="about" 
         ref={section2Ref}
-        className={`container mx-auto p-8 transition-opacity duration-1000 ease-in ${
-          isSection2Visible ? "opacity-100" : "opacity-0"
+        className={`relative z-10 py-12 transition-all duration-1000 ease-out ${
+          isSection2Visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
         }`}
       >
         <About />
       </div>
 
-
-      {/* Third Section:! */}
+      {/* Third Section: Skills */}
       <div
         id="skills" 
         ref={section3Ref}
-        className={`container mx-auto p-8 transition-opacity duration-1000 ease-in ${
-          isSection3Visible ? "opacity-100" : "opacity-0"
+        className={`relative z-10 py-12 transition-all duration-1000 ease-out ${
+          isSection3Visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
         }`}
       >
-        <Skill/>
+        <Skill />
       </div>
 
-      {/* Forrth Section:! */}
+      {/* Fourth Section: Portfolio */}
       <div
         id="portfolio" 
         ref={section4Ref}
-        className={`container mx-auto p-8 transition-opacity duration-1000 ease-in ${
-          isSection4Visible ? "opacity-100" : "opacity-0"
+        className={`relative z-10 py-12 transition-all duration-1000 ease-out ${
+          isSection4Visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
         }`}
       >
-        <Portfolio/>
+        <Portfolio />
       </div>
 
-
-
+      {/* Fifth Section: Contact */}
       <div
         id="contact" 
         ref={section5Ref}
-        className={`container mx-auto p-8 transition-opacity duration-1000 ease-in ${
-          isSection5Visible ? "opacity-100" : "opacity-0"
+        className={`relative z-10 py-12 pb-24 transition-all duration-1000 ease-out ${
+          isSection5Visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
         }`}
       >
-        <Contact/>
+        <Contact />
       </div>
-
-
     </div>
   );
 };

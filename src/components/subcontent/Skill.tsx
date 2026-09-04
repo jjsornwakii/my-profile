@@ -4,14 +4,27 @@ import React, { type ReactNode } from "react";
 
 type TboxProps = {
     icon: ReactNode;
-    text: string
+    text: string;
+    highlight?: boolean;
+    level?: string;
 };
 
-const Tbox = ({ icon, text }: TboxProps) => (
-    <div className="flex  bg-[#D9D9D9] rounded-md w-20 h-20  justify-center">
-        <div className="flex flex-col pt-2">
-            <div>{icon}</div>
-            <div className="text-black text-[10px]">{text}</div>
+const Tbox = ({ icon, text, highlight, level }: TboxProps) => (
+    <div className={`relative group flex flex-col items-center justify-center p-3 rounded-xl transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl cursor-pointer ${
+        highlight 
+            ? 'bg-gradient-to-b from-[#2E2A2A] to-[#1f1b1b] border-2 border-[#F2C942] shadow-[0_0_15px_rgba(242,201,66,0.25)]' 
+            : 'bg-[#2E2A2A]/80 border border-white/10 hover:border-[#F2C942]/60'
+    } w-24 h-24 sm:w-28 sm:h-28`}>
+        {level && (
+            <span className="absolute -top-2 px-1.5 py-0.5 rounded text-[9px] font-bold bg-[#F2C942] text-black tracking-wider uppercase shadow">
+                {level}
+            </span>
+        )}
+        <div className="transform transition-transform duration-300 group-hover:scale-110 flex items-center justify-center h-10 w-10">
+            {icon}
+        </div>
+        <div className={`mt-2 text-[11px] font-medium text-center truncate w-full ${highlight ? 'text-[#F2C942]' : 'text-gray-200 group-hover:text-white'}`}>
+            {text}
         </div>
     </div>
 );
@@ -19,20 +32,98 @@ const Tbox = ({ icon, text }: TboxProps) => (
 
 const Skill: React.FC = () => {
 
-
-
     return (
-        <div className="flex flex-col container mx-auto p-8 my-12  text-center text-white">
-            <div className="text-2xl font-semibold inline-block border-b border-[#F2C942] self-center">SKILL</div>
-            <div className="pt-5 font-thin text-xs">
-                Technology Stack & Skill
+        <div className="flex flex-col container mx-auto p-4 sm:p-8 my-8 text-center text-white">
+            <div className="relative group self-center">
+                <h2 className="text-2xl sm:text-3xl font-bold tracking-wider text-white">
+                    SKILL & TECH STACK
+                </h2>
+                <div className="h-1 w-16 bg-[#F2C942] mx-auto mt-2 rounded-full transition-all duration-300 group-hover:w-32"></div>
+            </div>
+            <p className="pt-3 text-xs sm:text-sm text-gray-400 font-light">
+                Technologies, Frameworks & Development Workflow
+            </p>
+
+            {/* PRIMARY: MOBILE DEVELOPMENT */}
+            <div className="mt-12 mb-4">
+                <span className="inline-block px-4 py-1 rounded-full bg-[#F2C942]/15 border border-[#F2C942]/40 text-[#F2C942] text-xs font-semibold tracking-wider uppercase">
+                    ⭐ Core Specialization: Mobile Development
+                </span>
+            </div>
+            
+            <div className="flex flex-wrap justify-center gap-4 pt-4">
+                {/* Kotlin Native */}
+                <Tbox 
+                    highlight 
+                    level="Primary"
+                    text={'Kotlin Native'} 
+                    icon={
+                        <svg width="40" height="40" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M56.25 56.25H3.75V3.75H56.25L30 30L56.25 56.25Z" fill="url(#paint0_linear_kotlin)"/>
+                            <defs>
+                                <linearGradient id="paint0_linear_kotlin" x1="56.25" y1="3.75" x2="3.75" y2="56.25" gradientUnits="userSpaceOnUse">
+                                    <stop stopColor="#C757BC"/>
+                                    <stop offset="0.5" stopColor="#D44988"/>
+                                    <stop offset="1" stopColor="#F88909"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    }
+                />
+
+                {/* Android SDK / Native */}
+                <Tbox 
+                    highlight 
+                    level="Core"
+                    text={'Android SDK'} 
+                    icon={
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="#3DDC84">
+                            <path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-1.0003s.4482-1.0003.9993-1.0003c.5511 0 .9993.4486.9993 1.0003s-.4482 1.0003-.9993 1.0003m-11.046 0c-.5511 0-.9993-.4486-.9993-1.0003s.4482-1.0003.9993-1.0003c.5511 0 .9993.4486.9993 1.0003s-.4482 1.0003-.9993 1.0003m11.4045-6.02l1.9973-3.4592a.416.416 0 00-.1521-.5676.416.416 0 00-.5676.1521l-2.0223 3.503C15.5902 8.4128 13.8533 8.1 12 8.1s-3.5902.3128-5.1368.8497L4.8409 5.4467a.4161.4161 0 00-.5677-.1521.4157.4157 0 00-.1521.5676l1.9973 3.4592C2.6889 11.1867.3432 14.6589 0 18.761h24c-.3432-4.1021-2.6889-7.5743-6.1185-9.4396"/>
+                        </svg>
+                    }
+                />
+
+                {/* Store Management & CI/CD */}
+                <Tbox 
+                    highlight 
+                    level="Ops"
+                    text={'Store Deploy'} 
+                    icon={
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="#F2C942">
+                            <path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm0 4v10h16V8H4zm4 2h8v2H8v-2z"/>
+                        </svg>
+                    }
+                />
+
+                {/* Swift */}
+                <Tbox 
+                    text={'Swift (iOS)'} 
+                    level="Basic"
+                    icon={
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="#F05138">
+                            <path d="M20.245 18.52c-.06.11-.29.47-.41.65a8.43 8.43 0 0 1-1.39 1.48c-1.89 1.54-4.5 1.5-6.84.45-.63-.29-1.25-.66-1.84-1.07 3.51-.55 6.47-2.69 7.82-5.91-.77.78-1.63 1.44-2.58 1.95-2.6 1.39-5.74 1.25-8.31-.17C4.69 14.77 3.6 12.3 3.5 9.77c-.03-.78.07-1.57.26-2.33.8 2.37 2.47 4.34 4.67 5.43 2.12 1.05 4.61 1.13 6.88.35.32-.11.64-.24.95-.38-2.63-.44-4.9-2.02-6.11-4.34-1.12-2.14-1.18-4.72-.19-6.9 1.4 2.15 3.58 3.66 6.09 4.19 1.76.37 3.59.18 5.25-.49-.78 1.56-2.03 2.82-3.57 3.58 1.42-.04 2.81-.46 4.05-1.21-.57 1.48-1.56 2.76-2.85 3.67 2.05-.18 4.02-.97 5.67-2.2-.41 1.73-1.42 3.28-2.86 4.38h.01z"/>
+                        </svg>
+                    }
+                />
+
+                {/* Flutter */}
+                <Tbox 
+                    text={'Flutter'} 
+                    level="Familiar"
+                    icon={
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="#02569B">
+                            <path d="M14.314 0L2.3 12 6 15.7 21.686 0h-7.372zm.006 11.087l-6.326 6.326L14.32 23.74h7.373l-6.327-6.327 6.327-6.326h-7.373z" fill="#02569B"/>
+                            <path d="M11.68 13.72l-2.68 2.68 4.31 4.31 2.69-2.68-4.32-4.31z" fill="#42A5F5"/>
+                        </svg>
+                    }
+                />
             </div>
 
             {/* FRONTEND */}
-            <div className="pt-24 font-thin text-xs">
-                Frontend
+            <div className="pt-16 font-thin text-xs text-gray-400">
+                Frontend & UI Engineering
             </div>
-            <div className="flex flex-wrap justify-center gap-4 pt-8">
+            <div className="flex flex-wrap justify-center gap-4 pt-4">
                 <Tbox icon={<svg width="50" height="50" viewBox="0 0 73 73" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M9.125 9.125L13.6875 59.3125L36.5 63.875L59.3125 59.3125L63.875 9.125L9.125 9.125ZM54.1112 25.0938L25.7325 25.0938L26.3941 31.9375L53.4497 31.9375L51.6201 53.233L36.4772 57.0312L21.3411 53.2763L20.3716 43.3438H27.2609L27.6944 47.9062L36.5 49.6628L45.26 47.9063L45.9216 38.7812H20.1663L18.25 18.25L54.75 18.25L54.1112 25.0938Z" fill="#E65100" />
                 </svg>} text={'HTML'}>

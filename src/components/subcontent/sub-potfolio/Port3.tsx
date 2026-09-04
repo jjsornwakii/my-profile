@@ -8,11 +8,11 @@ type TagBoxProps = {
 
 const TagBox = ({ cat }: TagBoxProps) => {
     return (
-        <div className="flex rounded-sm bg-[#F2C942] p-1 hover:text-red-600">
+        <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-[#F2C942]/10 border border-[#F2C942]/30 text-[#F2C942] hover:bg-[#F2C942] hover:text-black transition-all duration-200 cursor-default">
             {cat}
-        </div>
+        </span>
     );
-}
+};
 
 const main_img = ['assets\\img\\p3\\m1.png',
     'assets\\img\\p3\\m2.png'
@@ -78,43 +78,67 @@ const Portfolio3: React.FC = () => {
     return (<>
 
 
-        <div className="container pt-16">
-            <div className="flex flex-col  md:px-28">
-                <div className="flex  flex-col md:flex-row  gap-14  ">
-                    <div className="flex gap-4 justify-center">
-                        {
-                            main_img.map((_src, index) => (
-                                <img src={_src} alt={`Image ${index + 1}`} className="max-w-[120px] min-w-[100px] md:min-h-[10px] md:max-h-[320px] w-auto object-contain" ></img>
-                            )
-                            )
-                        }
-                    </div>
-                    <div className="flex flex-col text-left">
-                        <div className="font-bold text-3xl">
-                            แอปพลิเคชันบันทึกสุขภาพ<br /> และวิเคราะห์ความเสี่ยงโรคเบาหวาน                        </div>
-                        <hr className="my-3 border-t border-[#F2C942] border-2"></hr>
-                        <div className="font-sans text-[24px]">
-                            Health Record & Diabetes Risk Analysis Application                        </div>
-                        <div className="pt-9 ">
-                            {t('port3-1')}<br />
-                            {t('port3-2')}<br />
-                            {t('port3-3')}<br />
-                            {t('port3-4')}<br />
-                            {t('port3-5')}
-
+        <div className="w-full glass-panel p-6 sm:p-8 rounded-2xl border border-white/10 hover:border-[#F2C942]/40 transition-all duration-300 shadow-xl">
+            <div className="flex flex-col lg:flex-row items-center gap-8">
+                {/* Mobile app mockups */}
+                <div className="flex gap-3 justify-center bg-black/40 p-3 rounded-xl border border-white/10 flex-shrink-0">
+                    {main_img.map((_src, index) => (
+                        <div key={index} className="relative group overflow-hidden rounded-lg">
+                            <img 
+                                src={_src} 
+                                alt={`Health App Mockup ${index + 1}`} 
+                                className="max-w-[130px] sm:max-w-[150px] max-h-[260px] object-contain transition-transform duration-500 group-hover:scale-105" 
+                            />
                         </div>
-                        <div className="flex flex-wrap gap-2 text-black mt-5">
-                            <TagBox cat={"Flutter"}></TagBox>
-                            <TagBox cat={"PHP"}></TagBox>
-                            <TagBox cat={"MySQL"}></TagBox>
-                        </div>
-                    </div>
-
+                    ))}
                 </div>
 
-            </div>
+                <div className="flex flex-col text-left space-y-3 flex-1">
+                    <div className="inline-block self-start px-2.5 py-0.5 rounded-full bg-[#F2C942]/15 border border-[#F2C942]/30 text-[#F2C942] text-[11px] font-semibold uppercase tracking-wider">
+                        Mobile Health Application
+                    </div>
 
-        </div>
+                    <h3 className="font-bold text-xl sm:text-2xl text-white">
+                        แอปพลิเคชันบันทึกสุขภาพ และวิเคราะห์ความเสี่ยงโรคเบาหวาน
+                    </h3>
+
+                    <div className="text-sm font-light text-gray-300 tracking-wide">
+                        Health Record & Diabetes Risk Analysis Application
+                    </div>
+
+                    <ul className="text-xs sm:text-sm text-gray-300 space-y-1.5 pt-2 font-light">
+                        <li className="flex items-start gap-2">
+                            <span className="text-[#F2C942]">▹</span>
+                            <span>{t('port3-1')}</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                            <span className="text-[#F2C942]">▹</span>
+                            <span>{t('port3-2')}</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                            <span className="text-[#F2C942]">▹</span>
+                            <span>{t('port3-3')}</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                            <span className="text-[#F2C942]">▹</span>
+                            <span>{t('port3-4')}</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                            <span className="text-[#F2C942]">▹</span>
+                            <span>{t('port3-5')}</span>
+                        </li>
+                    </ul>
+
+                    <div className="flex flex-wrap gap-2 pt-3">
+                        <TagBox cat={"Mobile App"} />
+                        <TagBox cat={"Health Analytics"} />
+                        <TagBox cat={"Camera PPG Sensor"} />
+                        <TagBox cat={"Flutter"} />
+                        <TagBox cat={"PHP"} />
+                        <TagBox cat={"MySQL"} />
+                    </div>
+                </div>
+            </div>
         <div className="relative">
             {showButtons && (
                 <div>
@@ -186,11 +210,10 @@ const Portfolio3: React.FC = () => {
                     </div>
                 ))}
             </div>
-           */
+            */
             }
         </div>
-
-
+        </div>
     </>);
 }
 

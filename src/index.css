@@ -2,3 +2,66 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Custom Cursor */
+* {
+  cursor: default;
+}
+
+a, button, input, textarea, select {
+  cursor: pointer;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #1e1b1b;
+}
+::-webkit-scrollbar-thumb {
+  background: #F2C942;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #d4ad32;
+}
+
+/* Parallax & Interactive Animations */
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(1deg); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.08); }
+}
+
+.animate-float {
+  animation: floatSlow 5s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: pulseGlow 6s ease-in-out infinite;
+}
+
+.glass-panel {
+  background: rgba(46, 42, 42, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(242, 201, 66, 0.15);
+}
+
+.glass-panel:hover {
+  border-color: rgba(242, 201, 66, 0.4);
+}
+
+.glow-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glow-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px -10px rgba(242, 201, 66, 0.25);
+  border-color: rgba(242, 201, 66, 0.6);
+}
