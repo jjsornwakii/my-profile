@@ -2,66 +2,75 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom Cursor */
-* {
-  cursor: default;
+@layer base {
+  body {
+    font-family: 'Geist', sans-serif;
+    background-color: #131317;
+    color: #e4e1e7;
+    overflow-x: hidden;
+  }
 }
 
-a, button, input, textarea, select {
-  cursor: pointer;
+/* Material Symbols Outlined font styling */
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: #1e1b1b;
+  background: #0e0e12;
 }
 ::-webkit-scrollbar-thumb {
-  background: #F2C942;
+  background: #353439;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #d4ad32;
+  background: #f2c942;
 }
 
-/* Parallax & Interactive Animations */
+/* Ambient Radial Glow Animations */
 @keyframes floatSlow {
   0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-10px) rotate(1deg); }
+  50% { transform: translateY(-8px) rotate(1deg); }
 }
 
 @keyframes pulseGlow {
-  0%, 100% { opacity: 0.3; transform: scale(1); }
-  50% { opacity: 0.6; transform: scale(1.08); }
+  0%, 100% { opacity: 0.35; transform: scale(1); }
+  50% { opacity: 0.65; transform: scale(1.06); }
 }
 
 .animate-float {
-  animation: floatSlow 5s ease-in-out infinite;
+  animation: floatSlow 6s ease-in-out infinite;
 }
 
 .animate-glow {
-  animation: pulseGlow 6s ease-in-out infinite;
+  animation: pulseGlow 7s ease-in-out infinite;
 }
 
-.glass-panel {
-  background: rgba(46, 42, 42, 0.65);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(242, 201, 66, 0.15);
+/* Glassmorphism helpers */
+.stitch-glass {
+  background: rgba(27, 27, 31, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.glass-panel:hover {
-  border-color: rgba(242, 201, 66, 0.4);
-}
-
-.glow-card {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.glow-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 30px -10px rgba(242, 201, 66, 0.25);
-  border-color: rgba(242, 201, 66, 0.6);
+.stitch-glass:hover {
+  border-color: rgba(242, 201, 66, 0.35);
+  box-shadow: 0 0 24px -4px rgba(242, 201, 66, 0.12);
 }

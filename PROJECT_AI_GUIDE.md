@@ -23,15 +23,16 @@
 ## 2. Tech Stack & Architecture
 
 - **Framework**: React 19 + TypeScript + Vite
-- **Styling**: Tailwind CSS + Custom CSS (`src/index.css`) featuring:
-  - Custom scrollbar & glassmorphism (`glass-panel`)
-  - Floating ambient parallax lighting (`animate-float`, `animate-glow`)
-  - 3D perspective mouse hover tilt card on profile picture
-  - Floating pill Navbar with live active scroll spy & language switch capsule
-  - Interactive project filtering tabs (All, Mobile Applications, IoT & Smart Watch, Web Systems)
-  - Glassmorphic portfolio project cards with hover zoom and sleek tag badges
-  - Dark-theme modern footer with glowing ambient backdrop and interactive social links
-  - Responsive layout for desktop, tablet, and mobile
+- **Design System**: **Obsidian Aurum** (derived from Google Stitch Design)
+  - Color Palette: Deep Obsidian background (`#131317`, `#0e0e12`, `#1b1b1f`), Radiant Amber accents (`#f2c942`, `#ffe8a9`, `#efc135`), Hairline borders (`rgba(255,255,255,0.08)` to gold focus)
+  - Typography: `Geist` for body & headlines, `JetBrains Mono` for code blocks, badges & status pills
+  - Icons: Google `Material Symbols Outlined`
+  - Floating pill Navbar with responsive mobile menu & live scroll spy
+  - Hero section featuring 3D interactive tilt terminal mockup (`MobileKernel.kt`), live pipeline beacons & stats
+  - 3-pillar engineering cards with dynamic frame-latency metric visualization
+  - Bento Box tech stack showcase (Core Mobile, Frontend & UI, Backend & Cloud, Dev Tooling)
+  - Interactive portfolio cards with animated PPG camera sensor simulation, Wear OS watch face, and ALPR smart gate view
+  - Glassmorphic inquiry form with EmailJS integration and response acknowledgment
 - **Internationalization (i18n)**:
   - `i18next`, `react-i18next`, `i18next-http-backend`, `i18next-browser-languagedetector`
   - Localization files located in:
@@ -53,18 +54,17 @@ my-profile/
 │   └── pdf/Resume.pdf        # Downloadable resume
 ├── src/
 │   ├── components/
-│   │   ├── Navbar.tsx        # Floating glassmorphic capsule nav + active scroll spy + language capsule
-│   │   ├── Content.tsx       # Main page container with IntersectionObserver + parallax background
-│   │   ├── Footer.tsx        # Sleek dark footer with social links & glowing accent
+│   │   ├── Navbar.tsx        # Floating pill nav + active scroll spy + language capsule
+│   │   ├── Content.tsx       # Main page container with parallax ambient background
+│   │   ├── Footer.tsx        # Obsidian Aurum footer with social links & back to top
 │   │   └── subcontent/
-│   │       ├── Home.tsx      # Hero section (3D tilt photo, tags, CTA buttons)
-│   │       ├── About.tsx     # About section (Pillars: Kotlin, Store Ops, Business Apps)
-│   │       ├── Skill.tsx     # Tech stack (Mobile Dev highlighted first)
-│   │       ├── Portfolio.tsx # Projects showcase with category filter pills
-│   │       ├── sub-potfolio/ # Individual project detail cards (Port1-Port4)
-│   │       └── Cotact.tsx    # Interactive contact form
+│   │       ├── Home.tsx      # Hero section (Interactive 3D MobileKernel.kt terminal card, CTA buttons)
+│   │       ├── About.tsx     # About section (3 Pillars: Kotlin Native, Store Ops, Business Modernization)
+│   │       ├── Skill.tsx     # Bento Box technical arsenal
+│   │       ├── Portfolio.tsx # Projects showcase (PPG Health, Wear OS, ALPR Smart Parking)
+│   │       └── Cotact.tsx    # Glassmorphic contact form + direct connect cards
 │   ├── App.tsx               # App root
-│   ├── index.css             # Global Tailwind & animation styles
+│   ├── index.css             # Global Tailwind, Geist/JetBrains fonts & ambient animations
 │   └── main.tsx              # React DOM entrypoint
 └── PROJECT_AI_GUIDE.md       # This AI agent knowledge file
 ```
