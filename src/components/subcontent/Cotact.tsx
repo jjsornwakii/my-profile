@@ -236,11 +236,8 @@ const Contact: React.FC = () => {
                   name="subject"
                   className="w-full px-4 py-2.5 rounded-xl bg-surface-container-lowest border border-white/10 text-on-surface font-sans text-sm focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary transition-all"
                 >
-                  <option value="Senior Mobile Developer Opportunity" className="bg-surface-container">
+                  <option value="Mobile Developer Opportunity" className="bg-surface-container">
                     {t('contact.opt_mobile')}
-                  </option>
-                  <option value="Mobile Tech Lead Opportunity" className="bg-surface-container">
-                    {t('contact.opt_lead')}
                   </option>
                   <option value="Store Deployment Consulting" className="bg-surface-container">
                     {t('contact.opt_store')}

@@ -228,27 +228,6 @@ const Home: React.FC = () => {
                   <div className="pl-4">&#125;</div>
                   <div>&#125;</div>
                 </div>
-
-                {/* Metric Cards Row inside Card */}
-                <div className="grid grid-cols-2 gap-3 pt-1">
-                  <div className="p-3 rounded-xl bg-surface-container border border-white/5 flex flex-col gap-1 shadow-sm">
-                    <div className="flex items-center gap-1.5 text-secondary">
-                      <span className="material-symbols-outlined text-[18px]">verified</span>
-                      <span className="font-mono text-xs font-semibold">Store Pipeline</span>
-                    </div>
-                    <div className="font-display text-lg font-bold text-on-surface">{t('hero.store_releases')}</div>
-                    <div className="font-sans text-xs text-on-surface-variant">{t('hero.store_releases_sub')}</div>
-                  </div>
-
-                  <div className="p-3 rounded-xl bg-surface-container border border-white/5 flex flex-col gap-1 shadow-sm">
-                    <div className="flex items-center gap-1.5 text-primary">
-                      <span className="material-symbols-outlined text-[18px]">speed</span>
-                      <span className="font-mono text-xs font-semibold">Performance</span>
-                    </div>
-                    <div className="font-display text-lg font-bold text-on-surface">{t('hero.fps_stat')}</div>
-                    <div className="font-sans text-xs text-on-surface-variant">{t('hero.fps_stat_sub')}</div>
-                  </div>
-                </div>
               </>
             ) : (
               /* TAB 2: Developer Photo & Identity View */
@@ -271,7 +250,7 @@ const Home: React.FC = () => {
                     {t('hero.kmitl_badge')}
                   </span>
                   <span className="font-mono text-xs px-3 py-1 rounded-full bg-surface-container-highest text-secondary font-semibold border border-white/5">
-                    Android & iOS Specialist
+                    Mobile Developer
                   </span>
                 </div>
               </div>
